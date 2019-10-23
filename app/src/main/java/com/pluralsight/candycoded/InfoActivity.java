@@ -9,6 +9,8 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import java.net.URI;
+
 public class InfoActivity extends AppCompatActivity {
 
     @Override
@@ -29,11 +31,17 @@ public class InfoActivity extends AppCompatActivity {
         Uri uri = Uri.parse("geo:0,0?q=618 E South St Orlando, FL 32801");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW,uri);
         mapIntent.setPackage("com.google.android.apps.maps");
-        
+
         if(mapIntent.resolveActivity(getPackageManager())!= null){
             startActivity(mapIntent);
         }
 
+    }
+    public void createPhoneIntent(View view){
+        Intent phoneIntent = new Intent(Intent.ACTION_DIAL);
+        Uri phoneUri = Uri.parse("tel:0123456789");
+        phoneIntent.setData(phoneUri);
+        startActivity(phoneIntent);
     }
 
     // ***
